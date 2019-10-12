@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+			<div class="panel-heading">
+
+
+
+					<button type="button" class="btn btn-info">新增</button>
+					<button type="button" class="btn btn-info">修改</button>
+					<button type="button" class="btn btn-info">删除</button>
+
+
+			</div>
+			<table class="table table-hover">
+				 <thead><tr class="info"><td ><input type="checkbox"></td><td>标题</td><td>作者</td><td>发布时间</td></tr></thead>
+				 <tbody>
+				 	<tr>
+				 		<td><input type="checkbox"></td></td>
+				 		<td>标题</td>
+				 		<td>作者</td>
+				 		<td>时间</td>
+				 	</tr>
+				 	<tr>
+				 		<td><input type="checkbox"></td></td>
+				 		<td>标题</td>
+				 		<td>作者</td>
+				 		<td>时间</td>
+				 	</tr>
+				 	<tr>
+				 		<td><input type="checkbox"></td></td>
+				 		<td>标题</td>
+				 		<td>作者</td>
+				 		<td>时间</td>
+				 	</tr>
+				 	<tr>
+				 		<td><input type="checkbox"></td></td>
+				 		<td>标题</td>
+				 		<td>作者</td>
+				 		<td>时间</td>
+				 	</tr>
+				 </tbody>
+				 <tfoot>
+				 	<tr class="warning">
+				 		<td colspan="2">一共20条数据，当前第1页，一共1页，当前页面显示20条</td>
+
+				 		<td colspan="2">前往第
+				 			<select>
+							  <option>1</option>
+							  <option>2</option>
+							  <option>3</option>
+							  <option>4</option>
+							  <option>5</option>
+							</select>页
+				 		</td>
+				 	</tr>
+				 </tfoot>
+			</table>
+
+		</div>

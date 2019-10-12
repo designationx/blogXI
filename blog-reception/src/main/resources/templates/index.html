@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+        <meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+		<meta name="viewport" content="width=device-width,initial-scale=0.5,max-scale=0.5,min-scale=0.5"/>
+		<!--<title></title>-->
+		<link href="../css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="../css/gustbook.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../js/jtimer.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<script src="../js/index.js"></script>
+
+
+		
+	</head>
+	<body id="body">
+
+	<div th:include="header :: copyheader"></div>
+
+		<div class="content">
+			<div class="text" id="text">
+				<div class="content_left" id="contenet">
+					<div class="news" onclick="news(this)" th:each="article:${articles}" th:value="${article.id}">
+						<div class="news_img"></div>
+						<div class="new_content">
+							<div class="new_title" th:text = "${article.title}"></div>
+							<div class="new_text" th:text = "${article.text}"></div>
+							<div class="new_msg">
+								<span class="author" th:text = "${article.author}"> </span>
+								<span></span>
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+								<span class="look" th:text = "${article.look}"></span>
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> </span>
+								<span class="dianzan" th:text = "${article.praise}"></span>
+								<span class="glyphicon glyphicon-comment" aria-hidden="true"> </span>
+								<span class="pinglun" th:text = "${article.comment}"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="limit">
+						<nav aria-label="Page navigation">
+						  <ul class="pagination">
+						    <li>
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+				</div>
+				<div class="content_right" id="advert">
+					<div class="advert">
+						<div class="advert_img"></div>
+						<div class="advert_title">
+							<span>震惊：广东一李姓男子居然做出这种事情......</span>
+						</div>
+					</div>
+					<div class="advert">
+						<div class="advert_title">
+							<span>热门文章</span>
+						</div>
+						<div class="advert_content">
+							<dl>
+								<dt th:each="hot:${hot}"><a href="" th:text="${hot.title}" th:href="@{'/p/'+${hot.id}}">震惊，男人看了会沉默，女人看了会流泪......</a></dt>
+
+							</dl>
+						</div>
+					</div>
+
+				
+	
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+		<div th:include="footer :: common"></div>
+	</body>
+</html>

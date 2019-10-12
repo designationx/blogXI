@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Blog后台</title>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<script src="../js/highcharts.js"></script>
+		<script src="../js/series-label.js"></script>
+		<script src="../js/exporting.js"></script>
+		<script src="../js/export-data.js"></script>
+		<script type="text/javascript">
+			function hiddenOrNone(classname) {
+				var classs = document.getElementsByClassName(classname.className);
+				for(var i=1;i<classs.length;i++){
+					classs[i].style.display = (classs[i].style.display == "" ||classs[i].style.display == "none" )?"block":"none";
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<div class="left">
+			<div class="log" style="display: block;" onclick="hiddenOrNone(this)">
+				数据统计
+			</div>
+			<a href="census.html"><div class="log zi">文章浏览量</div></a>
+			<div class="log zi">站点浏览量</div>
+
+			<div class="article" style="display: block;" onclick="hiddenOrNone(this)">
+				文章管理				
+			</div>
+			<div class="article zi">发布文章</div>
+			<div class="article zi"></div>
+			<div class="article zi">文章管理</div>
+			<div class="article zi">文章管理</div>
+			<div class="user" style="display: block;" onclick="hiddenOrNone(this)">
+				用户管理						
+			</div>
+			<div class="user zi">文章管理</div>
+			<div class="user zi">文章管理</div>
+			<div class="user zi">文章管理</div>
+			<div class="user zi">文章管理</div>
+			<div class="power" style="display: block;" onclick="hiddenOrNone(this)">
+				权限管理
+			</div>
+			<div class="power zi">文章管理</div>
+			<div class="power zi">文章管理</div>
+			<div class="power zi">文章管理</div>
+			<div class="power zi">文章管理</div>
+			
+		</div>
+			<div id="container" style="min-width: 310px;max-width: 1600px; height: 800px; margin: 0 auto"></div>
+			<script type="text/javascript">
+// Data retrieved from http://vikjavev.no/ver/index.php?spenn=2d&sluttid=16.06.2015.
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'spline',
+        scrollablePlotArea: {
+            minWidth: 600,
+            scrollPositionX: 1
+        }
+    },
+    title: {
+        text: '站点访问量'
+    },
+    subtitle: {
+        text: '2019.6.4 ———— 2019.7.3'
+    },
+    xAxis: {
+        type: 'datetime',
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    yAxis: {
+        title: {
+            text: '访问量（人）'
+        },
+        minorGridLineWidth: 0,
+        gridLineWidth: 0,
+        alternateGridColor: null
+        
+    },
+    tooltip: {
+        valueSuffix: ' 人'
+    },
+    plotOptions: {
+        spline: {
+            lineWidth: 4,
+            states: {
+                hover: {
+                    lineWidth: 5
+                }
+            },
+            marker: {
+                enabled: false
+            },
+            pointInterval: 3600000*24, // one hour
+            pointStart: Date.UTC(2019, 5, 4, 0, 0, 0)
+        }
+    },
+    series: [{
+        name: '访问人数',
+        data: [
+            1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30	
+        ]
+
+    }],
+    navigation: {
+        menuItemStyle: {
+            fontSize: '10px'
+        }
+    }
+});
+		</script>
+		
+	</body>
+</html>

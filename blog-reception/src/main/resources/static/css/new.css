@@ -1,0 +1,61 @@
+.content-content{
+	width: 90%;
+	margin: 0 auto;
+	height: 100%;
+	margin-bottom: 20px;
+	background-color: #fff;
+	opacity: 0.8;
+	box-shadow: 5px 5px 5px black;
+}
+
+.content-tab{
+	width: 100%;
+	height: 80px;
+	padding-left: 20px;
+	line-height: 80px;
+	color: #000;
+	font-size: 16px;
+	border-bottom: 1px solid #CCE5FF;
+}
+
+.content-title{
+	width: 100%;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	color: #000;
+	font-size: 26px;
+}
+
+.content-info{
+    padding-left: 50px;
+}
+
+.content-arthor{
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+}
+
+.content-time{
+	width: 100%;
+	height: 30px;
+	font-size: 16px;
+}
+
+.content-body{
+	width: 90%;
+	padding-top:20px;
+	margin: 0 auto;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.neirong{
+	margin-top: 20px;
+	background-color: #fff;
+	opacity: 0.8;
+	padding: 10px;
+}
+
+

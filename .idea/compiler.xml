@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="backstage" />
+        <module name="blog-backstage" />
+        <module name="blog-data" />
+        <module name="blog-eureka" />
+        <module name="blog-login" />
+        <module name="blog-reception" />
+        <module name="blog-user" />
+        <module name="demo" />
+        <module name="demoshiro" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="backstage" target="1.8" />
+      <module name="blog" target="1.8" />
+      <module name="blog-article" target="1.8" />
+      <module name="blog-authro" target="1.8" />
+      <module name="blog-backstage" target="1.8" />
+      <module name="blog-data" target="1.8" />
+      <module name="blog-eureka" target="1.8" />
+      <module name="blog-login" target="1.8" />
+      <module name="blog-reception" target="1.8" />
+      <module name="blog-user" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="demoshiro" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

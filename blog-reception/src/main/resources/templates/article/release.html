@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <p>欢迎分享您的技术心得</p>
+</div>
+标题：<input type="text" id="title"/><br/>
+作者：<input type="text" id="author"/><br/>
+标签：<input type="text" id="tag"/><br/>
+简介：<input type="text" id="text"/><br/>
+<button id="btn1">文章发表</button>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/wangEditor.min.js" ></script>
+
+
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#div1');
+    editor.create();
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        // 读取 html
+        var content = editor.txt.html();
+        var title_ = document.getElementById("title").value;
+        var author_ = document.getElementById("author").value;
+        var tag_ = document.getElementById("tag").value;
+        var text_ = document.getElementById("text").value;
+        $.ajax({
+				url:"http://192.168.1.104:8080/article_release",
+				data:{val:content,title:title_,author:author_,tag:tag_,text:text_},
+				type:"post",
+				    success:function(data){
+				             try {
+				             		alert(data);
+
+				                } catch (e) {
+				                    return false;
+				                }
+				    }
+				});
+    }, false)
+
+
+
+
+</script>
+</body>
+</html>

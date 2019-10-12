@@ -1,0 +1,66 @@
+<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>发表文章</h3>
+			</div>
+		<form class="form-horizontal">
+			<div style="height: 20px;"></div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">文章标题</label>
+			    <div class="col-sm-3">
+			      <input type="input" class="form-control"  placeholder="请输入您的文章标题">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-sm-2 control-label">文章作者</label>
+			    <label  class="control-label">article</label>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">请输入您的文章简介</label>
+			    <textarea style="border-radius: 5px;"	rows="3" cols="100" placeholder="请输入您的文章简介，请控制在150字以内"></textarea>
+			</div>
+			<div id="div1">
+			    <p>欢迎分享您的技术心得</p>
+			</div>
+			<div style="height: 20px;"></div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label"></label>
+				<button id="btn1" class="btn">发表文章</button>
+			</div>
+
+
+
+		</form>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/wangEditor.min.js" ></script>
+		<script type="text/javascript">
+		    var E = window.wangEditor;
+		    var editor = new E('#div1');
+		    editor.create();
+
+//		    document.getElementById('btn1').addEventListener('click', function () {
+//		        // 读取 html
+//		        var content = editor.txt.html();
+//		        var title_ = document.getElementById("title").value;
+//		        var author_ = document.getElementById("author").value;
+//		        var tag_ = document.getElementById("tag").value;
+//		        var text_ = document.getElementById("text").value;
+//		        $.ajax({
+//						url:"http://192.168.1.104:8080/article_release",
+//						data:{val:content,title:title_,author:author_,tag:tag_,text:text_},
+//						type:"post",
+//						    success:function(data){
+//						             try {
+//						             		alert(data);
+//
+//						                } catch (e) {
+//						                    return false;
+//						                }
+//						    }
+//						});
+//		    }, false)
+//
+//
+
+
+		</script>

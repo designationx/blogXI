@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+				<meta name="viewport" content="width=device-width,initial-scale=0.5,max-scale=0.5,min-scale=0.5"/>
+
+		<link href="../css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="../css/gustbook.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/new.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../js/jtimer.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<title th:text="${article.title}"></title>
+		<script th:inline="javascript">
+			function comment(){
+				<!--var val = document.getElementById("comment_content").value;-->
+				var username = prompt("请输入您的昵称");
+				if(!username){alert("请输入昵称后评论");return;}
+				var articleid = /*[[${article.id}]]*/ '1';
+				$.ajax({
+				url:"http://192.168.1.104:8701/comment_add",
+				data:{val:$("#comment_content").val(),id:articleid,name:username},
+				type:"post",
+				    success:function(data){
+				             try {
+				             		if(data.code == 200){
+										alert(data.msg);
+										location.reload();
+				             		}else if(data.code == 500){
+				             			alert(data.msg+"<br/>"+data.data);
+				             		}
+
+				                } catch (e) {
+				                    return false;
+				                }
+				    }
+				});
+			}
+			var x = 0;
+			function zantong(a){
+				var num = parseInt(a.innerHTML.substring(3));
+				if(x==0){
+					num++;x++
+				}else{
+				num--,x=0;
+				}
+				a.innerHTML = "赞同("+num+")";
+			}
+		</script>
+	</head>
+	<body id="body">
+	<div th:include="header :: copyheader"></div>
+
+	<div class="content">
+			<div class="text" id="text">
+				<div class="content_left" id="contenet">
+					<div class="content-content">
+						<div class="content-tab" th:text = "'文章详情>>'+${article.author}+'>>'+${article.title}">英雄联盟>>英雄攻略>>疾风剑豪 亚索>>浪客之道</div>
+						<div class="content-title"th:text="${article.title}">标题</div>
+						<div class="content-info">
+							<span class="content-author" th:text="${'作者：'+article.author}">作者</span>
+							<span class="content-time" th:text="${'发布时间'+article.createtime}">发布时间</span>
+						</div>
+
+
+						<div class="content-body" >
+							<div th:each="content:${article.content}">
+								<span th:utext = "${'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + content}">文章内容</span>
+							</div>
+						</div>
+						
+					</div>	
+					<div class="pinglun">
+						<br /><br /><br />
+						<textarea class="form-control" rows="3" placeholder="发表您对这篇文章的看法把..." id="comment_content"></textarea><br />
+						<button class="btn col-2 btn-info" style="float: right; margin-right: 20px;" onclick="comment()">发表评论</button>
+						<div style="clear:both;"></div>
+						<div class="neirong">
+							<div class="louceng" th:each="comment:${comment}">
+								<br />
+								<p style="border-bottom: 1px dashed #FFC107;" th:text = "${comment.floor}+'L   '+ ${comment.time} + '   '+${comment.name}">1L 2019-5-27 21：40 帅气的溪哥：</p>
+								<p style="" th:text = "${comment.content}">文章说的很中肯，作为一名亚索玩家，我很认同这理念</p>
+								<!--<p style="text-align: right;padding-right: 60px;border-bottom: 1px dashed red;" th:text="'赞同('+${comment.praise}+')反对('+${comment.oppose}+')回复'">赞同(0)反对(0)回复</p>-->
+								<span style="float: right;margin-right: 5px;" >回复</span>
+								<span style="float: right;margin-right: 5px;" th:text="'反对('+${comment.oppose}+')'" onclick="fandui()" th:value="${comment.floor}">赞同(0)反对(0)回复</span>
+								<span style="float: right;margin-right: 5px;" th:text="'赞同('+${comment.praise}+')'" onclick="zantong(this)">赞同(0)反对(0)回复</span>
+								<div style="text-align: left;padding-left: 60px;" th:each="remark:${remark}" >
+								<p th:each="remark:${remark}"  th:if="${remark.commentid} == ${comment.id} ">
+									<span  th:text = "${remark.name}+' 回复 '+${remark.target}+':'+${remark.content}">2019-5-27 21：40 帅气的溪哥：说的好，我给你点个赞 </span>
+									<span style="float: right;margin-right: 60px;" th:text="'赞同('+${remark.praise}+')'" onclick="zantong(this)">赞同(0)反对(0)回复</span>
+									<span style="float: right;margin-right: 60px;" th:text="'反对('+${remark.oppose}+')'" onclick="fandui()">赞同(0)反对(0)回复</span>
+									<span style="float: right;margin-right: 60px;" >回复</span>
+									<span style="clear:both;"></span>
+								</p>
+							</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_right" id="advert">
+					<div class="advert">
+						<div class="advert_img"></div>
+						<div class="advert_title">
+							<span>震惊：广东一李姓男子居然做出这种事情......</span>
+						</div>
+					</div>
+					<div class="advert">
+						<div class="advert_title">
+							<span>热门文章</span>
+						</div>
+						<div class="advert_content">
+							<dl>
+								<dt th:each="hot:${hot}"><a href="" th:text="${hot.title}" th:href="@{'/p/'+${hot.id}}">震惊，男人看了会沉默，女人看了会流泪......</a></dt>
+
+							</dl>
+						</div>
+					</div>
+
+				
+				
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</div>
+	<div th:include="footer :: common"></div>
+
+	</body>
+
+</html>

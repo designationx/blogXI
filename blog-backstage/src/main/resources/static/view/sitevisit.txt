@@ -1,0 +1,68 @@
+<div id="container" style="min-width: 310px;max-width: 1600px; height: 800px; margin: 0 auto"></div>
+    <script src="js/highcharts.js"></script>
+	<script src="js/series-label.js"></script>
+	<script src="js/exporting.js"></script>
+	<script src="js/export-data.js"></script>
+	<script type="text/javascript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'spline',
+        scrollablePlotArea: {
+            minWidth: 600,
+            scrollPositionX: 1
+        }
+    },
+    title: {
+        text: '站点访问量'
+    },
+    subtitle: {
+        text: '2019.6.4 ———— 2019.7.3'
+    },
+    xAxis: {
+        type: 'datetime',
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    yAxis: {
+        title: {
+            text: '访问量（人）'
+        },
+        minorGridLineWidth: 0,
+        gridLineWidth: 0,
+        alternateGridColor: null
+
+    },
+    tooltip: {
+        valueSuffix: ' 人'
+    },
+    plotOptions: {
+        spline: {
+            lineWidth: 4,
+            states: {
+                hover: {
+                    lineWidth: 5
+                }
+            },
+            marker: {
+                enabled: false
+            },
+            pointInterval: 3600000*24,
+            pointStart: Date.UTC(2019, 5, 4, 0, 0, 0)
+        }
+    },
+    series: [{
+        name: '访问人数',
+        data: [
+            1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+        ]
+
+    }],
+    navigation: {
+        menuItemStyle: {
+            fontSize: '10px'
+        }
+    }
+});
+
+		</script>

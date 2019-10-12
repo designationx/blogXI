@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+	<header th:fragment="copyheader">
+		<script>
+	function index(){
+			window.location.href="http://192.168.1.104:8701/search?content="+$("#tab").val();
+
+	}
+</script>
+		<div class="header row" id="header">
+
+			<div class="htmleaf-container" style="background: #red;" >
+				<nav class="animenu">
+					<button class="animenu__toggle">
+						<span class="animenu__toggle__bar"></span>
+						<span class="animenu__toggle__bar"></span>
+						<span class="animenu__toggle__bar"></span>
+					</button>
+					<ul class="animenu__nav">
+						<li>
+							<a href="index" th:href="@{/index}">博客主页</a>
+						</li>
+						<li>
+							<a href="#">前端相关</a>
+							<ul class="animenu__nav__child">
+								<li><a href="index?tag=div" th:href="@{/index?tag=div}">DIV+CSS</a></li>
+								<li><a href="index?tag=webframe" th:href="@{/index?tag=webframe}">框架</a></li>
+								<li><a href="index?tag=js"  th:href="@{/index?tag=js}">js底层</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#">后台相关</a>
+							<ul class="animenu__nav__child">
+								<li><a href="index?tag=oop" th:href="@{/index?tag=oop}">OOP</a></li>
+								<li><a href="index?tag=javaframe" th:href="@{/index?tag=javaframe}">框架</a></li>
+								<li><a href="index?tag=java" th:href="@{/index?tag=java}">java底层知识</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">更多</a>
+						</li>
+						<li>
+							<a href="">在线留言</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<script>
+				(function(){
+				  var animenuToggle = document.querySelector('.animenu__toggle'),
+					  animenuNav    = document.querySelector('.animenu__nav'),
+					  hasClass = function( elem, className ) {
+						return new RegExp( ' ' + className + ' ' ).test( ' ' + elem.className + ' ' );
+					  },
+					  toggleClass = function( elem, className ) {
+						var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ' ) + ' ';
+						if( hasClass(elem, className ) ) {
+						  while( newClass.indexOf( ' ' + className + ' ' ) >= 0 ) {
+							newClass = newClass.replace( ' ' + className + ' ' , ' ' );
+						  }
+						  elem.className = newClass.replace( /^\s+|\s+$/g, '' );
+						} else {
+						  elem.className += ' ' + className;
+						}
+					  },
+					  animenuToggleNav =  function (){
+						toggleClass(animenuToggle, "animenu__toggle--active");
+						toggleClass(animenuNav, "animenu__nav--open");
+					  }
+
+				  if (!animenuToggle.addEventListener) {
+					  animenuToggle.attachEvent("onclick", animenuToggleNav);
+				  }
+				  else {
+					  animenuToggle.addEventListener('click', animenuToggleNav);
+				  }
+				})()
+			</script>
+			<div class="header_right">
+				<div class="search">
+					<div class="input-group">
+
+						<input type="text" class="form-control" placeholder="Search for..." id="tab"/>
+						<span class="input-group-btn">
+			        <button class="btn btn-default" type="button" onclick="index()">Go!</button>
+			      </span>
+					</div>
+				</div>
+				<div></div>
+			</div>
+
+		</div>
+
+		<div class="null"></div>
+	</header>
+</html>
